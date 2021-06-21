@@ -1,4 +1,4 @@
-package controller.User;
+package controller.user;
 
 import model.user.User;
 
@@ -44,7 +44,7 @@ public class SignUpUser extends HttpServlet {
         request.setAttribute("user",user);
 
         // フォワード
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/user/new.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/session/new.jsp");
         dispatcher.forward(request, response);
 
     }
