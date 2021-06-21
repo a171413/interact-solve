@@ -1,19 +1,21 @@
 package model.user;
 
+import model.Default;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class User {
+public class User extends Default {
+    public final static String currentUserKey = "currentUser";
 
-    private Integer id;
     private String name;
     private String mail;
     private String pass;
     private Boolean isWorking;
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
 
     //新規登録時コンストラクタ
     public User(
@@ -25,32 +27,25 @@ public class User {
             Timestamp createdAt,
             Timestamp updatedAt
     ){
-        this.id = id;
+        super(id, createdAt, updatedAt);
+        //親クラスのコンストラクタを呼び出す
         this.name = name;
         this.mail = mail;
         this.pass= pass;
         this.isWorking = isWorking;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     //setメソッド
-    public void setId(Integer id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setMail(String mail) { this.mail = mail; }
     public void setPass(String pass) { this.pass = pass; }
     public void setIsWorking(Boolean isWorking) { this.isWorking = isWorking; }
-    public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
-    public void setUpdatedAt(Timestamp updatedAt) { this.updatedAt = updatedAt; }
 
     //getメソッド
-    public Integer getId() { return this.id; }
     public String getName() { return this.name; }
     public String getMail() { return this.mail; }
     public String getPass() { return this.pass; }
     public Boolean getIsWorking() { return this.isWorking; }
-    public Date getCreatedAt() { return this.createdAt; }
-    public Date getUpdatedAt() { return this.updatedAt; }
 
     //controller/User/SignUpUser.javaからの呼び出し
     public void insertUser(){
@@ -58,6 +53,25 @@ public class User {
         Repository.insertUser(this);
     }
 
+    //User認証の機構
+    public boolean authenticateUser(HttpServletRequest request) {
+        //Mailをもとにユーザーが存在するか調べる
+        User persistedUser = Repository.selectUserByMail(this.mail);
+        if (persistedUser == null) {    //Mailをもつユーザーがいなければ
+            return false;
+        }
+        //ここからはMailをもつユーザーがいればの話
+        this.hashPassword();    //入力されたパスワードをハッシュ化
+        if (this.pass.equals(persistedUser.pass)) { //ハッシュ化したものとDBのパスワードが一致すれば
+            HttpSession session = request.getSession(); //セッションを作って
+            session.setAttribute(currentUserKey, persistedUser);    //セッションスコープにユーザー情報保存
+            return true;
+        } else {    //パスワードが違ったらfalseを返す
+            return false;
+        }
+    }
+
+    //ハッシュ化
     public void hashPassword(){
         this.pass=getHash(this.mail,this.pass);
     }
@@ -90,5 +104,16 @@ public class User {
             stringBuffer.append(Integer.toHexString(bytes[i] & 0x0f));
         }
         return stringBuffer.toString();
+    }
+
+    public static User getCurrentUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        return (User) session.getAttribute(currentUserKey);
+    }
+
+    //セッションスコープからcurrentUserKeyを取り除く
+    public static void logoutUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.removeAttribute(currentUserKey);
     }
 }
