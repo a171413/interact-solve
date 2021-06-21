@@ -1,4 +1,4 @@
-package model;
+package model.reply;
 
 public class Reply {
 }

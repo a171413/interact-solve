@@ -1,6 +1,5 @@
-package controller.User;
+package controller.user;
 
-import control.UserManager;
 import model.user.User;
 
 import javax.servlet.RequestDispatcher;
@@ -10,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
-@WebServlet("/User/SignUp")
+@WebServlet("/user/signup")
 public class SignUpUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //signupにGETリクエストがきたら/WEB-INF/user/sighUp.jspへ
@@ -46,7 +44,7 @@ public class SignUpUser extends HttpServlet {
         request.setAttribute("user",user);
 
         // フォワード
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/user/new.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/session/new.jsp");
         dispatcher.forward(request, response);
 
     }
