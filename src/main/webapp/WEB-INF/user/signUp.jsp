@@ -12,7 +12,7 @@
 </head>
 <body>
     <p>ユーザー情報を入力してください</p>
-    <form action="/User/SignUp" method="post">
+    <form action="/user/signup" method="post">
         <table>
             <tr>
                 <td>氏名</td>
