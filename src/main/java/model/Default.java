@@ -5,12 +5,12 @@ import java.sql.Timestamp;
 public class Default {
     private Integer id;
     private Timestamp createdAt;
-    private Timestamp updateAt;
+    private Timestamp updatedAt;
 
-    public Default(Integer id, Timestamp createdAt, Timestamp updateAt){
+    public Default(Integer id, Timestamp createdAt, Timestamp updatedAt){
         this.id = id;
         this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        this.updatedAt = updatedAt;
     }
 
     public Integer getId() {
@@ -21,7 +21,7 @@ public class Default {
         return createdAt;
     }
 
-    public Timestamp getUpdateAt() {
-        return updateAt;
+    public Timestamp getupdatedAt() {
+        return updatedAt;
     }
 }
