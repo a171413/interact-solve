@@ -15,6 +15,7 @@
     <title>ログイン完了画面</title>
 </head>
 <body>
+    <a href="/sessions/delete">ログアウト</a>
     <h1>ここに来ていればログインは完了です</h1>
     名前：<c:out value="${currentUser.getName()}"/><br>
     作成日：${Format.formatTimestamp(currentUser.getCreatedAt(), "yyyy年MM月dd日")}<br>

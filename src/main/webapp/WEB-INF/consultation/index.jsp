@@ -12,6 +12,7 @@
     <title>お悩み一覧</title>
 </head>
 <body>
+    <a href="/sessions/delete">ログアウト</a>
     <h1>お悩み一覧はこちら</h1>
     <table>
         <tr>
