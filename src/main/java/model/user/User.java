@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class User extends Default {
     public final static String currentUserKey = "currentUser";
