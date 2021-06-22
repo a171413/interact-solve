@@ -75,7 +75,7 @@ public class User extends Default {
         this.pass=getHash(this.mail,this.pass);
     }
 
-    private String getHash(String email, String password) {
+    private String getHash(String mail, String password) {
         final String HASH_ALGORITHM = "SHA-256";
         final int STRETCH_COUNT = 1024;
         final String FIXED_SALT = "vBjRGHZ6awqJL9JDQuNftAzaPSnHszQN";
@@ -86,7 +86,7 @@ public class User extends Default {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        String salt = email + FIXED_SALT;
+        String salt = mail + FIXED_SALT;
         messageDigest.update(salt.getBytes());
         byte[] hashed = messageDigest.digest(password.getBytes());
 
