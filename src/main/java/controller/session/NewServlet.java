@@ -19,10 +19,7 @@ public class NewServlet extends HttpServlet {
         String mail = request.getParameter("mail");
         String pass = request.getParameter("pass");
 
-        System.out.println(mail);
-        System.out.println(pass);
-
-        User user = new User(
+       User user = new User(
                 null,
                 null,
                 mail,
