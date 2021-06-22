@@ -11,6 +11,7 @@
     <title>お悩み登録画面</title>
 </head>
 <body>
+    <a href="/sessions/delete">ログアウト</a>
     <p>お悩みを登録してください</p>
     <form action="/consultations/new" method="post">
         <table>

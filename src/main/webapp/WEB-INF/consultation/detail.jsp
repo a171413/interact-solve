@@ -13,6 +13,7 @@
     <title>お悩み詳細</title>
 </head>
 <body>
+    <a href="/sessions/delete">ログアウト</a>
     <h1>ここは${consultation.getTitle()}についての詳細画面です</h1>
     <h2>詳細</h2>
     <table>
