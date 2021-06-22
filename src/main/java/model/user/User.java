@@ -52,6 +52,7 @@ public class User extends Default {
         Repository.insertUser(this);
     }
 
+
     //User認証の機構
     public boolean authenticateUser(HttpServletRequest request) {
         //Mailをもとにユーザーが存在するか調べる
@@ -62,6 +63,11 @@ public class User extends Default {
         //ここからはMailをもつユーザーがいればの話
         this.hashPassword();    //入力されたパスワードをハッシュ化
         if (this.pass.equals(persistedUser.pass)) { //ハッシュ化したものとDBのパスワードが一致すれば
+            //ログインしているかどうかの情報を切り替える
+            if(persistedUser.isWorking == false) {
+                persistedUser.isWorking = !persistedUser.isWorking;
+                Repository.switchIsWorking(persistedUser);
+            }
             HttpSession session = request.getSession(); //セッションを作って
             session.setAttribute(currentUserKey, persistedUser);    //セッションスコープにユーザー情報保存
             return true;
@@ -113,6 +119,13 @@ public class User extends Default {
     //セッションスコープからcurrentUserKeyを取り除く
     public static void logoutUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
+
+        User currentUser = (User) session.getAttribute(currentUserKey);
+        if(currentUser.isWorking == true) {
+            currentUser.isWorking = !currentUser.isWorking;
+            Repository.switchIsWorking(currentUser);
+        }
+
         session.removeAttribute(currentUserKey);
     }
 }

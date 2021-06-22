@@ -77,4 +77,30 @@ public class Repository extends Client {
             close(connection, stmt, rs);
         }
     }
+
+    public static void switchIsWorking(User user) {
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            //SQL文
+            String sql = "update users set is_working = ? where id = ?";
+
+            connection = create();
+
+            stmt = connection.prepareStatement(sql);
+
+            stmt.setBoolean(1, user.getIsWorking());
+            stmt.setInt(2, user.getId());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(connection, stmt, rs);
+        }
+
+    }
 }
