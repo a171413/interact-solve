@@ -4,7 +4,7 @@
 ## 使い方
 1. `$ git clone https://github.com/a171413/interact-solve.git` <br />
 （ghqを使っている人は `$ ghq get https://github.com/a171413/inteeract-solve` ）
-2. リポジトリ直下に`.env` ファイルを作成していい感じにポート番号等を指定する
+2. リポジトリ直下に`.env.sample` があるので同階層に複製（ファイル名は`.env`とする）したらポート番号等を指定する（大体元のままでよい）
 3. `$ cd リポジトリの場所` などでリポジトリのある場所に移動
 4. `$ docker compose build` を実行
 5. `$ docker compose up` を実行
