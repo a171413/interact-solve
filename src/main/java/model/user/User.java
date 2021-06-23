@@ -1,6 +1,7 @@
 package model.user;
 
 import model.Default;
+import model.status.Status;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,13 @@ public class User extends Default {
     private String mail;
     private String pass;
     private Boolean isWorking;
+    private Integer statusesId;
+    //statusの値はそれぞれ以下の状態を表す
+    //0. 部屋にいないor手続きしてない
+    //1. 話しかけてください
+    //2. 相談に乗ってください
+    //3. 話しかけないでください
+    private Status nowStatus;
 
     //新規登録時コンストラクタ
     public User(
@@ -23,8 +31,10 @@ public class User extends Default {
             String mail,
             String pass,
             Boolean isWorking,
+            Integer statusesId,
             Timestamp createdAt,
-            Timestamp updatedAt
+            Timestamp updatedAt,
+            Status nowStatus
     ){
         super(id, createdAt, updatedAt);
         //親クラスのコンストラクタを呼び出す
@@ -32,6 +42,8 @@ public class User extends Default {
         this.mail = mail;
         this.pass= pass;
         this.isWorking = isWorking;
+        this.statusesId = statusesId;
+        this.nowStatus = nowStatus;
     }
 
     //setメソッド
@@ -39,19 +51,22 @@ public class User extends Default {
     public void setMail(String mail) { this.mail = mail; }
     public void setPass(String pass) { this.pass = pass; }
     public void setIsWorking(Boolean isWorking) { this.isWorking = isWorking; }
+    public void setStatusesId(Integer statusesId) { this.statusesId = statusesId; }
+    public void setNowStatus(Status nowStatus) { this.nowStatus = nowStatus; }
 
     //getメソッド
     public String getName() { return this.name; }
     public String getMail() { return this.mail; }
     public String getPass() { return this.pass; }
     public Boolean getIsWorking() { return this.isWorking; }
+    public Integer getStatusesId() { return this.statusesId; }
+    public Status getNowStatus() { return this.nowStatus; }
 
     //controller/User/SignUpUser.javaからの呼び出し
     public void insertUser(){
         this.hashPassword();
         Repository.insertUser(this);
     }
-
 
     //User認証の機構
     public boolean authenticateUser(HttpServletRequest request) {
@@ -64,8 +79,8 @@ public class User extends Default {
         this.hashPassword();    //入力されたパスワードをハッシュ化
         if (this.pass.equals(persistedUser.pass)) { //ハッシュ化したものとDBのパスワードが一致すれば
             //ログインしているかどうかの情報を切り替える
-            if(persistedUser.isWorking == false) {
-                persistedUser.isWorking = !persistedUser.isWorking;
+            if(!persistedUser.isWorking) {
+                persistedUser.isWorking = true;
                 Repository.switchIsWorking(persistedUser);
             }
             HttpSession session = request.getSession(); //セッションを作って
@@ -121,10 +136,11 @@ public class User extends Default {
         HttpSession session = request.getSession();
 
         User currentUser = (User) session.getAttribute(currentUserKey);
-        if(currentUser.isWorking == true) {
-            currentUser.isWorking = !currentUser.isWorking;
+        if(currentUser.isWorking) {
+            currentUser.isWorking = false;
             Repository.switchIsWorking(currentUser);
         }
+        Repository.changeStatus(currentUser.getId(), 1);
 
         session.removeAttribute(currentUserKey);
     }

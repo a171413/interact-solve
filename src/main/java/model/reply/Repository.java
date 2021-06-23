@@ -72,7 +72,9 @@ public class Repository extends Client {
                                 null,
                                 null,
                                 rs.getBoolean("users.is_working"),
-                               null,
+                                rs.getInt("users.status"),
+                                null,
+                                null,
                                 null
                         )
                 );

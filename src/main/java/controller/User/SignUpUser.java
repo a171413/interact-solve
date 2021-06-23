@@ -33,6 +33,8 @@ public class SignUpUser extends HttpServlet {
                 mail,
                 pass,
                 false,
+                0,
+                null,
                 null,
                 null
         );
@@ -43,9 +45,7 @@ public class SignUpUser extends HttpServlet {
         //"user"という名前でuserインスタンスを保存
         request.setAttribute("user",user);
 
-        // フォワード
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/session/new.jsp");
-        dispatcher.forward(request, response);
-
+        //登録が完了したらログイン画面にリダイレクト
+        response.sendRedirect("/sessions/new");
     }
 }
