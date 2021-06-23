@@ -1,4 +1,4 @@
-<%@ page import="model.user.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: satohsoichiro
   Date: 2021/06/21
@@ -7,9 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/import.jsp"%>
-<%
-    User currentUser = (User) session.getAttribute("currentUser");
-%>
 <html>
 <head>
     <title>ログイン完了画面</title>
