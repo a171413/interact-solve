@@ -25,9 +25,6 @@ public class NewServlet extends HttpServlet {
         String title = request.getParameter("title");
         String detail = request.getParameter("detail");
 
-        System.out.println(title);
-        System.out.println(detail);
-
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("currentUser");
 
