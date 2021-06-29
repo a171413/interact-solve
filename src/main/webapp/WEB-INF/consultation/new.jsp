@@ -8,11 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>お悩み登録画面</title>
+    <title>提案登録画面</title>
 </head>
 <body>
     <a href="/sessions/delete">ログアウト</a>
-    <p>お悩みを登録してください</p>
+    <p>提案を登録してください</p>
     <form action="/consultations/new" method="post">
         <table>
             <tr>

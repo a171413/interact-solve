@@ -10,7 +10,7 @@
 <%@ include file="../common/import.jsp"%>
 <html>
 <head>
-    <title>お悩み詳細</title>
+    <title>提案詳細</title>
 </head>
 <body>
     <a href="/sessions/delete">ログアウト</a>
