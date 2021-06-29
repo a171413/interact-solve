@@ -25,10 +25,7 @@ public class NewServlet extends HttpServlet {
                 mail,
                 pass,
                 null,
-                null,
-                null,
-                null,
-               null
+                null
         );
 
         if (user.authenticateUser(request)) {   //ログインが成功したら

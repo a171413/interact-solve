@@ -13,7 +13,7 @@
 </head>
 <body>
     <a href="/sessions/delete">ログアウト</a>
-    <h1>お悩み一覧はこちら</h1>
+    <h1>提案一覧はこちら</h1>
     <table>
         <tr>
             <th>タイトル</th><th>内容</th><th>投稿者名</th>

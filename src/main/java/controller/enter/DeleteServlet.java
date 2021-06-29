@@ -1,4 +1,4 @@
-package controller.session;
+package controller.enter;
 
 import model.enter.Repository;
 import model.user.User;
@@ -12,19 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/sessions/delete")
+@WebServlet("/enter/delete")
 public class DeleteServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //requestオブジェクトの文字エンコーディング
+        request.setCharacterEncoding("UTF-8");
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/enter/delete.jsp");
+        dispatcher.forward(request, response);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //requestオブジェクトの文字エンコーディング
+        request.setCharacterEncoding("UTF-8");
+
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("currentUser");
+
         Repository.deleteEnter(user);
 
-        User.logoutUser(request);
-        response.sendRedirect("/sessions/new");
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/session/delete.jsp");
-        dispatcher.forward(request, response);
+       response.sendRedirect("/users");
     }
 }

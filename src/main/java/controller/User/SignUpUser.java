@@ -32,9 +32,6 @@ public class SignUpUser extends HttpServlet {
                 name,
                 mail,
                 pass,
-                false,
-                0,
-                null,
                 null,
                 null
         );
