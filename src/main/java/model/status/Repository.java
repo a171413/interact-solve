@@ -1,6 +1,7 @@
 package model.status;
 
 import lib.mysql.Client;
+import model.consultation.Consultation;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Repository extends Client {
 
         try {
             //SQL文
-            String sql = "select * from statuses";
+            String sql = "select * from statuses where id<>1";
             connection = create();
             stmt = connection.prepareStatement(sql);
             rs = stmt.executeQuery();
@@ -65,4 +66,5 @@ public class Repository extends Client {
             close(connection, stmt, rs);
         }
     }
+
 }
