@@ -5,6 +5,7 @@ import model.user.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Repository extends Client {
     public static void insertEnter(Enter enter) {
@@ -83,7 +84,7 @@ public class Repository extends Client {
         }
     }
 
-    public static ArrayList<Integer> indexEnters() {
+    public static HashMap<Integer, Integer> indexEnters() {
         Connection connection = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -91,15 +92,21 @@ public class Repository extends Client {
         try {
             //SQL文の用意
 //            String sql = "select statuses_id, count(statuses_id) from enters group by statuses_id";
-            String  sql = "select sub.statuses_id, count(*) from(select statuses_id from enters group by statuses_id)as sub";
+            String  sql = "select statuses_id, count(users_id) from enters group by statuses_id";
 
             connection = create();
             stmt = connection.prepareStatement(sql);
 
-            ArrayList<Integer> enters = new ArrayList<>();
+            HashMap<Integer, Integer> enters = new HashMap<>();
+            enters.put(0,0);    //この後ArrayListに変換すると先頭が0番目になってしまうので
+            enters.put(1,0);    //未手続きも一応
+            enters.put(2,0);
+            enters.put(3,0);
+            enters.put(4,0);
+
             rs = stmt.executeQuery();
             while(rs.next()) {
-                enters.add(rs.getInt("count(*)"));
+                enters.put(rs.getInt("statuses_id"), rs.getInt("count(users_id)"));
             }
             return enters;
 
