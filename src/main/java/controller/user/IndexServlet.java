@@ -25,7 +25,8 @@ public class IndexServlet extends HttpServlet {
         ArrayList<Consultation> myConsultations = Repository.selectConsultationsByUserId(model.user.Repository.getCurrentUser(request).getId());
         request.setAttribute("myConsultations", myConsultations);
 
-        ArrayList<Integer> enters = model.enter.Repository.indexEnters();
+        ArrayList<Integer> enters = new ArrayList<>(model.enter.Repository.indexEnters().values());
+        System.out.println(enters);
         request.setAttribute("enters", enters);
 
         ArrayList<Status> statuses = model.status.Repository.indexStatuses();
