@@ -1,0 +1,221 @@
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #3584bb;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+    transition: all 0.5s;
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+    transition: all 0.5s;
+}
+
+#menu-btn-check {
+    display: none;
+}
+
+.menu-content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%;/*leftの値を変更してメニューを画面外へ*/
+    z-index: 80;
+    background-color: #3584bb;
+    transition: all 0.5s;/*アニメーション設定*/
+}
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color:#ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+}
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+
+#menu-btn-check:checked ~ .menu-content {
+    left: 0;/*メニューを画面内へ*/
+}
+
+/*!*ヘッダー　（サイトに合わせて調整して下さい。）*!*/
+/*header {*/
+/*    position: relative;*/
+/*    padding: 15px 0 0 0px;*/
+/*    background-color: #fff;*/
+/*}*/
+/*.logo {*/
+/*    width: 140px;*/
+/*    margin: 0 auto;*/
+/*}*/
+/*img {*/
+/*    max-width: 100%;*/
+/*    height: auto;*/
+/*}*/
+/*!*ハンバーガーアイコン*!*/
+/*.btn-burger {*/
+/*    cursor: pointer;*/
+/*    display: block;*/
+/*    width: 56px;*/
+/*    height: 60px;*/
+/*    position: absolute;*/
+/*    top: 5px;*/
+/*    right: 10px;*/
+/*}*/
+/*!*ハンバーガーアイコンを作る三本線*!*/
+/*.icon, .icon:before, .icon:after {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    left: 0;*/
+/*    bottom: 0;*/
+/*    height: 2px; !*線の太さ*!*/
+/*    width: 35px; !*線の長さ*!*/
+/*    background-color: #444;*/
+/*    border-radius: 2px;*/
+/*    display: block;*/
+/*    　content: '';*/
+/*    cursor: pointer;*/
+/*    margin: auto;*/
+/*}*/
+/*!*三本線の間隔*!*/
+/*.icon:before {*/
+/*    top: 20px;*/
+/*}*/
+/*.icon:after {*/
+/*    top: -20px;*/
+/*}*/
+/*!*チェックボックス非表示*!*/
+/*.nav-toggle {*/
+/*    display: none;*/
+/*}*/
+/*!*アイコンをクリックしたら*!*/
+/*.nav-toggle:checked ~ .btn-burger .icon {*/
+/*    background: transparent;*/
+/*}*/
+/*.nav-toggle:checked ~ .btn-burger .icon:before {*/
+/*    transform: rotate(-45deg);*/
+/*    top: 0;*/
+/*}*/
+/*.nav-toggle:checked ~ .btn-burger .icon:after {*/
+/*    transform: rotate(45deg);*/
+/*    top: 0;*/
+/*}*/
+/*.icon,*/
+/*.icon:before,*/
+/*.icon:after {*/
+/*    transition: all .8s;*/
+/*}*/
+/*!*表示されるメニューの中身*!*/
+/*.nav {*/
+/*    background-color: #5c55e7;*/
+
+/*}*/
+/*.nav-list a {*/
+/*    display: block;*/
+/*    text-decoration: none;*/
+/*    color: #fff;*/
+/*}*/
+/*.nav-list {*/
+/*    list-style: none;*/
+/*    display: none;*/
+/*    margin: 0;*/
+/*    padding-left: 20px;*/
+/*}*/
+/*.nav-list li {*/
+/*    margin: 0;*/
+/*    padding: 10px;*/
+/*}*/
+/*.nav-toggle:checked ~ .nav .nav-list {*/
+/*    display: block;*/
+/*}*/
+/*!*メインイメージ*!*/
+/*.top {*/
+/*    height: 200px;*/
+/*    margin-bottom: 50px;*/
+/*    background-color: #f0f8ff;*/
+/*}*/
+/*!* --------------------------------------------------*/
+/*  幅768px以上のスタイル指定 ここから*/
+/*-------------------------------------------------- *!*/
+/*@media screen and (min-width: 768px) {*/
+/*    !* ハンバーガーボタン *!*/
+/*    .btn-burger {*/
+/*        display: none;  !*768px以上では使用しない *!*/
+/*    }*/
+/*    header {*/
+/*        padding: 30px 0 0;*/
+/*    }*/
+/*    .logo {*/
+/*        width: auto;*/
+/*        margin: 0 0 20px;*/
+/*        padding: 0;*/
+/*        text-align: center;*/
+/*    }*/
+/*    .nav-toggle:checked ~ .nav .nav-list {*/
+/*        display: none;*/
+/*    }*/
+/*    .nav {*/
+/*        height: 75px;*/
+/*    }*/
+/*    .nav-list {*/
+/*        display: flex;*/
+/*        justify-content: center;*/
+/*        height: 75px;*/
+/*        align-items: center;*/
+/*    }*/
+/*    .nav-list li:not(:last-child) {*/
+/*        border-right: 1px solid #fff;*/
+/*    }*/
+/*}*/
