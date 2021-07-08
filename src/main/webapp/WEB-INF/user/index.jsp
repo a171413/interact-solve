@@ -10,18 +10,17 @@
 <html>
 <head>
     <title>ログイン完了画面</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 </head>
 <body>
-    <a href="/sessions/delete">ログアウト</a>
+    <%@ include file="../common/hamburger.jsp"%>
     <h1>マイページ</h1>
     名前：<c:out value="${currentUser.getName()}"/><br>
     作成日：${Format.formatTimestamp(currentUser.getCreatedAt(), "yyyy年MM月dd日")}<br>
 
     <a href="/enter/new">入室手続きはこちらから</a><br>
-    <a href="/enter/change">入室状態の変更はこちらから</a><br>
-    <a href="/enter/delete">退室手続きはこちらから</a><br>
-    <a href="/consultations/new">提案の新規登録はこちら</a><br>
-    <a href="/consultations/index">提案一覧はこちら</a>
+    <a href="/consultations/new">タネの新規登録はこちら</a><br>
+    <a href="/consultations/index">タネ一覧はこちら</a>
 
     <h2>現在の部屋の入室状況</h2>
     <table>

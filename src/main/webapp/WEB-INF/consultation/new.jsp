@@ -9,9 +9,10 @@
 <html>
 <head>
     <title>提案登録画面</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 </head>
 <body>
-    <a href="/sessions/delete">ログアウト</a>
+<%@ include file="../common/hamburger.jsp"%>
     <p>提案を登録してください</p>
     <form action="/consultations/new" method="post">
         <table>

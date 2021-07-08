@@ -11,9 +11,10 @@
 <html>
 <head>
     <title>提案詳細</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 </head>
 <body>
-    <a href="/sessions/delete">ログアウト</a>
+<%@ include file="../common/hamburger.jsp"%>
     <h1>ここは${consultation.getTitle()}についての詳細画面です</h1>
     <h2>詳細</h2>
     <table>

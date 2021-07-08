@@ -7,20 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/import.jsp"%>
-<%--<%--%>
-<%--    User currentUser = (User) request.getAttribute("user");--%>
-<%--    String userName = currentUser.getName();--%>
-<%--%>--%>
 <html>
 <head>
     <title>ようこそ</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 </head>
 <body>
     <h1>
-<%--        <% if (userName!=null) {%>--%>
-<%--            <%=userName%>さん--%>
-<%--        <% } %>--%>
-        ようこそ　いごこラボの部屋へ
+       ようこそ　いごこラボの部屋へ
     </h1>
     <h2>まずはログインをお願いします</h2>
     <form action="/sessions/new" method="post">

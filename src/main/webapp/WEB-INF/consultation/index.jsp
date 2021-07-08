@@ -10,9 +10,10 @@
 <html>
 <head>
     <title>お悩み一覧</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 </head>
 <body>
-    <a href="/sessions/delete">ログアウト</a>
+<%@ include file="../common/hamburger.jsp"%>
     <h1>提案一覧はこちら</h1>
     <table>
         <tr>

@@ -10,9 +10,11 @@
 <html>
 <head>
     <title>ようこそ</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 </head>
 <body>
-    <h1>本当にログアウトして大丈夫ですか？</h1>
+<%@ include file="../common/hamburger.jsp"%>
+<h1>本当にログアウトして大丈夫ですか？</h1>
 
     <form action="/sessions/delete" method="post">
         <input type="submit" value="ログアウト" />

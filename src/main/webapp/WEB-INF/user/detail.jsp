@@ -12,7 +12,7 @@
     <title>${userName}さんの詳細ページ</title>
 </head>
 <body>
-    <a href="/sessions/delete">ログアウト</a>
+<%@ include file="../common/hamburger.jsp"%>
     <h1>ここは${userName}さんの詳細ページです</h1>
     <h2>これまで${userName}さんが投稿してきたお悩みはこちら</h2>
     <table>

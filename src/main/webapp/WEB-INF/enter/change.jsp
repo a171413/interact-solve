@@ -10,8 +10,10 @@
 <html>
 <head>
     <title>入室状態変更</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 </head>
 <body>
+<%@ include file="../common/hamburger.jsp"%>
 <h1>入室状態の変更を行います．現在のあなたの状態を選択してください</h1>
 <form action="/enter/change" method="post">
     <select name="statusesId">

@@ -10,8 +10,10 @@
 <html>
 <head>
     <title>退室手続き</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
 </head>
 <body>
+<%@ include file="../common/hamburger.jsp"%>
 <h1>退室手続きを行います．本当によろしいですか？</h1>
 <form action="/enter/delete" method="post">
     <input type="submit" value="はい">
