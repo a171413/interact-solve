@@ -20,13 +20,21 @@ public class NewServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //requestオブジェクトの文字エンコーディング
-        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("currentUser");
+        if(Repository.checkEnter(user)){ //入室してたらお悩み一覧に飛ばす
+            response.sendRedirect("/consultations/index");
+        }
 
-        ArrayList<Status> statuses = model.status.Repository.indexStatuses();
-        request.setAttribute("statuses", statuses);
+        else{
+            request.setCharacterEncoding("UTF-8");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/enter/new.jsp");
-        dispatcher.forward(request, response);
+            ArrayList<Status> statuses = model.status.Repository.indexStatuses();
+            request.setAttribute("statuses", statuses);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/enter/new.jsp");
+            dispatcher.forward(request, response);
+        }
 
     }
 
