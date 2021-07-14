@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: satohsoichiro
@@ -33,6 +34,21 @@
             <tr>
                 <td>パスワード確認</td>
                 <td><input type="password" id="passConfirm" minlength="6" maxlength="20"></td>
+            </tr>
+            <tr>
+                <td>誕生日</td>
+                <td><input type="date" id="birthday" name="birthday" required /></td>
+            </tr>
+            <tr>
+                <td>秘密の質問</td>
+                <td>
+                    <select id="question" name="question">
+                        <c:forEach var="question" items="${questions}">
+                            <option value="${question.getId()}"><c:out value="${question.getContent()}" /></option>
+                        </c:forEach>
+                    </select>
+                    <input type="">
+                </td>
             </tr>
         </table>
         <input type="submit" name="button" value="登録" oninput="CheckPassword(this)">
