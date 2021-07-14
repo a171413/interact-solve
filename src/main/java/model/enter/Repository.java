@@ -92,7 +92,7 @@ public class Repository extends Client {
         try {
             //SQL文の用意
             boolean ans = false;
-            String sql = "select * from enters where statuses_id = ? where users_id = ?";
+            String sql = "select * from enters where statuses_id = ? and users_id = ?";
             connection = create();
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, 1);
