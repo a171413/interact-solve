@@ -23,7 +23,7 @@ public class NewServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("currentUser");
         if(Repository.checkEnter(user)){ //入室してたらお悩み一覧に飛ばす
-            response.sendRedirect("/consultations/index");
+            response.sendRedirect("/enter/change");
         }
 
         else{
