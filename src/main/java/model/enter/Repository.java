@@ -4,6 +4,7 @@ import lib.mysql.Client;
 import model.user.User;
 
 import java.sql.*;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -79,6 +80,31 @@ public class Repository extends Client {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            close(connection, stmt, rs);
+        }
+    }
+
+    public static boolean checkEnter(User user) {
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            //SQL文の用意
+            boolean ans = false;
+            String sql = "select * from enters where statuses_id = ? and users_id = ?";
+            connection = create();
+            stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, 1);
+            stmt.setInt(2, user.getId());
+            if(Objects.nonNull(stmt.executeQuery())){
+                ans = true;
+            }
+        return ans;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         } finally {
             close(connection, stmt, rs);
         }
