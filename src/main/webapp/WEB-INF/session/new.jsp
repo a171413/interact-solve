@@ -1,4 +1,4 @@
-<%@ page import="model.user.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: satohsoichiro
   Date: 2021/06/21
@@ -25,6 +25,9 @@
     <h2>まずはログインをお願いします</h2>
     <form action="/sessions/new" method="post">
         <table>
+            <c:if test="${couldNotSignIn}">
+                ※メールアドレスまたはパスワードが間違えています
+            </c:if>
             <tr>
                 <td>メールアドレス</td>
                 <td><input type="email" id="mail" name="mail" required /></td>
