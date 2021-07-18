@@ -47,7 +47,7 @@
                             <option value="${question.getId()}"><c:out value="${question.getContent()}" /></option>
                         </c:forEach>
                     </select>
-                    <input type="">
+                    <input type="text" id="answer" name="answer" />
                 </td>
             </tr>
         </table>
