@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/consultations/detail")
+@WebServlet("/consultation/detail")
 public class DetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //requestオブジェクトの文字エンコーディング
@@ -32,7 +32,7 @@ public class DetailServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/consultation/detail.jsp");
             dispatcher.forward(request, response);
         } else {
-            response.sendRedirect("/consultations/index");
+            response.sendRedirect("/consultation/index");
         }
     }
 

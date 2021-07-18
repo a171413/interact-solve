@@ -42,6 +42,6 @@ public class NewServlet extends HttpServlet {
         reply.insertReply();
 
         //登録が完了したらリダイレクト;
-        response.sendRedirect("/consultations/detail?id=" + consultations_id);
+        response.sendRedirect("/consultation/detail?id=" + consultations_id);
     }
 }
