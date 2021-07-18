@@ -8,60 +8,78 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/import.jsp"%>
-<html>
+<!doctype html>
+<html lang="ja">
 <head>
-    <title>提案詳細</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>${consultation.getTitle()} - タネ詳細</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/common.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <a href="/sessions/delete">ログアウト</a>
-    <h1>ここは${consultation.getTitle()}についての詳細画面です</h1>
-    <h2>詳細</h2>
-    <table>
-        <tr>
-            <th>内容</th><th>投稿者</th>
-        </tr>
-        <tr>
-            <td>
-                ${consultation.getDetail()}
-            </td>
-            <td>
-                ${consultation.contributor.getName()}
-            </td>
-        </tr>
-    </table>
-
-    <form action="/replies/new?consultations_id=${consultation.getId()}" method="post">
-        <textarea name="content"></textarea>
-        <input type="submit" value="送信" />
-    </form>
-
-    <h2>コメント</h2>
-    <table>
-        <tr>
-            <th>内容</th><th>投稿者</th><th>投稿時間</th>
-        </tr>
-        <c:forEach var="reply" items="${replies}">
-            <tr>
-                <td><c:out value="${reply.getContent()}"/></td>
-                <td>
-                    <c:url value="/users/detail" var = "aURL">
-                        <c:param name="usersId" value="${reply.getReplier().getId()}"/>
-                        <c:param name="usersName" value="${reply.getReplier().getName()}"/>
-                    </c:url>
-                    <a href="${aURL}">${reply.getReplier().getName()}</a>
-                </td>
-                <td>${reply.getCreatedAt()}</td>
-            </tr>
-        </c:forEach>
-    </table>
+<body id="content" class="tane">
+	<div class="wrap">
+		<header class="header">
+			<h1 class="header-ttl">タネ詳細</h1>
+			<small class="header-en">TANE DETAIL</small>
+			<div id="menu" class="header-menu"><span></span><span></span></div>
+			<nav class="header-nav">
+				<ul>
+					<li class="entry-btn"><a href="/consultation/new"><i class="icon-tr"></i>タネを登録</a></li>
+					<li class="entry-list"><a href="/consultation/index"><i class="icon-tr"></i>みんなのタネを見る</a></li>
+					<li><a href="/enter/new"><i class="icon-tr"></i>入室設定</a></li>
+					<li><a href="/enter/change"><i class="icon-tr"></i>状態変更</a></li>
+					<li><a href="/enter/delete"><i class="icon-tr"></i>退室設定</a></li>
+					<li><a href="/user/index"><i class="icon-tr"></i>マイページ</a></li>
+					<li><a href="/sessions/delete"><i class="icon-tr"></i>ログアウト</a></li>
+				</ul>
+			</nav>
+		</header><!-- ▲ header -->
+		<main class="container">
+			<div class="container-tane">
+				<header>
+					<i class="icon-seed"></i>
+					<h2>${consultation.getTitle()}</h2>
+					<figure>
+						<figcaption><b>${consultation.contributor.getName()}</b>さん</figcaption>
+					</figure>
+				</header>
+				<div class="comment">
+					<p>${consultation.getDetail()}</p>
+				</div>
+				<form action="/replies/new?consultations_id=${consultation.getId()}" method="post">
+					<textarea name="content" placeholder="こんなのはどうですか？" class="proposal"></textarea>
+					<div class="form-btn"><button type="submit" value="送信">提案</button></div>
+				</form>
+				<div class="container-tane_proposal">
+					<h3><small>CHECK!</small>みんなの提案</h3>
+					<c:forEach var="reply" items="${replies}">
+					<dl>
+						<div>
+							<dd>
+								<p><c:out value="${reply.getContent()}"/></p>
+								<time>${reply.getCreatedAt()}</time>
+							</dd>
+							<dt>
+								<c:url value="/users/detail" var = "aURL">
+									<c:param name="usersId" value="${reply.getReplier().getId()}"/>
+									<c:param name="usersName" value="${reply.getReplier().getName()}"/>
+								</c:url>
+								<figure><a href="${aURL}"><img src="${pageContext.request.contextPath}/img/sample.png" alt="${reply.getReplier().getName()}さん"/></a></figure>
+								<p><a href="${aURL}"><b>${reply.getReplier().getName()}</b>さん</a></p>
+							</dt>
+						</div>
+					</dl>
+					</c:forEach>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer-copy">&copy; Tokyo Gakugei University.</div>
+		</footer>
+	</div>
 </body>
 </html>
-
-<style>
-    table {
-        border-collapse: collapse;
-    }
-    th, td {
-        border: 1px solid #333;
-    }
-</style>
