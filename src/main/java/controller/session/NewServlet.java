@@ -25,13 +25,17 @@ public class NewServlet extends HttpServlet {
                 mail,
                 pass,
                 null,
-                null
+                null,
+               null,
+               null,
+               null
         );
 
         if (user.authenticateUser(request)) {   //ログインが成功したら
             response.sendRedirect("/users");
         } else {
             //ログインが失敗したらフォワード
+            request.setAttribute("couldNotSignIn", true);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/session/new.jsp");
             dispatcher.forward(request, response);
         }

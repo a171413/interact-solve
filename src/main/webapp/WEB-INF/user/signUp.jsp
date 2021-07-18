@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: satohsoichiro
@@ -16,6 +17,7 @@
 	<script src="${pageContext.request.contextPath}/js/common.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body id="content">
 	<div class="wrap">
 		<header class="header">
@@ -34,6 +36,17 @@
 						<li><input type="email" id="mailConfirm" oninput="CheckEmail(this)" placeholder="メールアドレス確認" required /></li>
 						<li><input type="password" id="pass" name="pass" minlength="6" maxlength="20" placeholder="パスワード"></li>
 						<li><input type="password" id="passConfirm" minlength="6" maxlength="20" placeholder="パスワード確認"></li>
+                        <li><input type="date" id="birthday" name="birthday" required /></li>
+						<li>
+                            <div class="form-select">
+                                <select name="question">
+                                    <c:forEach var="question" items="${questions}">
+                                        <option value="${question.getId()}"><c:out value="${question.getContent()}" /></option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </li>
+                        <li><input type="text" id="answer" name="answer" /></li>
 					</ul>
 					<div class="form-btn"><button type="submit" name="button" oninput="CheckPassword(this)">登録</button></div>
 				</form>

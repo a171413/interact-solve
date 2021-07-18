@@ -19,7 +19,7 @@ public class DeleteServlet extends HttpServlet {
         User user = (User) session.getAttribute("currentUser");
         Repository.deleteEnter(user);
 
-        User.logoutUser(request);
+        user.logoutUser(request);
         response.sendRedirect("/sessions/new");
     }
 

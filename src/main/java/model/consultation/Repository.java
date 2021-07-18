@@ -70,6 +70,9 @@ public class Repository extends Client {
                                 null,
                                 null,
                                 null,
+                                null,
+                                null,
+                                null,
                                 null
                         )
                 );
@@ -111,6 +114,9 @@ public class Repository extends Client {
                         new User(
                                 rs.getInt("users.id"),
                                 rs.getString("users.name"),
+                                null,
+                                null,
+                                null,
                                 null,
                                 null,
                                 null,

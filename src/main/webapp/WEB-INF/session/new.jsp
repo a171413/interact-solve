@@ -1,4 +1,4 @@
-<%@ page import="model.user.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: satohsoichiro
   Date: 2021/06/21
@@ -7,10 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/import.jsp"%>
-<%--<%--%>
-<%--    User currentUser = (User) request.getAttribute("user");--%>
-<%--    String userName = currentUser.getName();--%>
-<%--%>--%>
 <!doctype html>
 <html lang="ja">
 <head>
@@ -30,9 +26,6 @@
 		<main class="container">
 			<div class="container-inner">
 				<div class="welcome-mes">
-<%--        <% if (userName!=null) {%>--%>
-<%--            <%=userName%>さん--%>
-<%--        <% } %>--%>
 					<p>ようこそいごこラボの部屋<br>ログインしよう！</p>
 				</div>
 				<form action="/sessions/new" method="post">
@@ -42,6 +35,9 @@
 					</ul>
 					<div class="form-btn"><button type="submit" name="button">ログイン</button></div>
 				</form>
+				<c:if test="${couldNotSignIn}">
+					<p>※メールアドレスまたはパスワードが間違えています</p>
+				</c:if>
 				<div class="forget-btn">パスワードをお忘れの方は<a href="/user/forget">こちら</a></div>
 			</div>
 		</main>

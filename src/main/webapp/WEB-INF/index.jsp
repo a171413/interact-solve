@@ -1,6 +1,4 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="model.status.Status" %>
-<%@ page import="model.status.Repository" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: satohsoichiro
   Date: 2021/06/21

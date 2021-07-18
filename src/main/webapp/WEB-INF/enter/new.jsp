@@ -32,7 +32,7 @@
 					<li><a href="/enter/new"><i class="icon-tr"></i>入室設定</a></li>
 					<li><a href="/enter/change"><i class="icon-tr"></i>状態変更</a></li>
 					<li><a href="/enter/delete"><i class="icon-tr"></i>退室設定</a></li>
-					<li><a href="/user/index"><i class="icon-tr"></i>マイページ</a></li>
+					<li><a href="/users"><i class="icon-tr"></i>マイページ</a></li>
 					<li><a href="/sessions/delete"><i class="icon-tr"></i>ログアウト</a></li>
 				</ul>
 			</nav>
