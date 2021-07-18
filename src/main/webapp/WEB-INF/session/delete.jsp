@@ -26,8 +26,8 @@
 		<main class="container">
 			<div class="container-inner">
 				<div class="welcome-mes">
-					<figure class="user-fig"><img src="${pageContext.request.contextPath}/img/sample.png" alt="Chimpuiさん"/></figure>
-					<p>Chimpuiさん<br>本当にログアウトして<br>大丈夫ですか？</p>
+					<figure class="user-fig"><img src="${pageContext.request.contextPath}/img/sample.png" alt="${currentUser.getName()}さん"/></figure>
+					<p>${currentUser.getName()}さん<br>本当にログアウトして<br>大丈夫ですか？</p>
 				</div>
 				<ul class="select-ul">
 					<li>
