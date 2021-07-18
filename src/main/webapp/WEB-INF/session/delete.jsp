@@ -7,19 +7,48 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/import.jsp"%>
-<html>
+<!doctype html>
+<html lang="ja">
 <head>
-    <title>ようこそ</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>ログアウト</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <h1>本当にログアウトして大丈夫ですか？</h1>
-
-    <form action="/sessions/delete" method="post">
-        <input type="submit" value="ログアウト" />
-    </form>
-
-    <form action="/users" method="get">
-        <input type="submit" value="いいえ" />
-    </form>
+<body id="content">
+	<div class="wrap">
+		<header class="header">
+			<h1 class="header-ttl">ログイン</h1>
+			<small class="header-en">LOGIN</small>
+		</header><!-- ▲ header -->
+		<main class="container">
+			<div class="container-inner">
+				<div class="welcome-mes">
+					<figure class="user-fig"><img src="${pageContext.request.contextPath}/img/sample.png" alt="Chimpuiさん"/></figure>
+					<p>Chimpuiさん<br>本当にログアウトして<br>大丈夫ですか？</p>
+				</div>
+				<ul class="select-ul">
+					<li>
+						<form action="/users" method="get">
+							<button type="submit" value="いいえ" class="outline-btn">いいえ</button>
+						</form>
+					</li>
+					<li>
+						<form action="/sessions/delete" method="post">
+							<button type="submit" value="はい">はい</button>
+						</form>
+					</li>
+				</ul>
+				<div class="attention">
+					<p>ログアウトに関する注意事項の記載。ログアウトに関する注意事項の記載。ログアウトに関する注意事項の記載。ログアウトに関する注意事項の記載。</p>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer-copy">&copy; Tokyo Gakugei University.</div>
+		</footer>
+	</div>
 </body>
 </html>

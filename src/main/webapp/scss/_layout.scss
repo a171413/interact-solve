@@ -1,0 +1,837 @@
+@charset "UTF-8";
+.wrap {
+	padding-bottom: 4rem;
+}
+#top {
+	background: url("../svg/bg.svg");
+	background-size: 100% 100%;
+	.wrap {
+		.header {
+			padding: 4.2rem 0 2rem;
+			text-align: center;
+			&-logo {
+				background:  $g;
+				border-radius: 50%;
+				width: 12rem;
+				height: 12rem;
+				margin: 0 auto 1.5rem;
+				color:#fff;
+				font-size: 8rem;
+				line-height: 12rem;
+			}
+			&-mes {
+				font-size: 5.4rem;
+				line-height: 1;
+				color: $p;
+			}
+		}
+	}
+}
+@media #{$phone}{
+}
+#content {
+	.wrap {
+		.header {
+			position: absolute;
+			text-align: left;
+			padding: 0 2rem .8rem;
+			color: #fff;
+			z-index: 2;
+			width: 100%;
+			left: 0;
+			top: 0;
+			&:after {
+				width: 32rem;
+				height: 7rem;
+				transform: rotate(-15deg);
+				position: absolute;
+				background: #000;
+				left: -2rem;
+				top: -4rem;
+				content: "";
+				z-index: -1;
+			}
+			&-ttl {
+				width: 30rem;
+				text-align: left;
+				font-size: 1.6rem;
+				line-height: 1;
+				position: absolute;
+				left: .2rem;
+				top: -.8rem;
+				transform: rotate(-15deg);
+			}
+			&-en {
+				width: 30rem;
+				font-size: 1.2rem;
+				display: block;
+				line-height: 1;
+				font-weight: 700;
+				position: absolute;
+				left: .8rem;
+				top: .8rem;
+				transform: rotate(-15deg);
+			}
+			&-nav {
+				position: fixed;
+				width: 20rem;
+				right: -20rem;
+				top: 6rem;
+				background: $base;
+				border-radius: 1rem 0 0 1rem;
+				padding: 1.5rem;
+				transition: right 0.5s;
+				&.on {
+					right: 0;
+				}
+				ul {
+					li {
+						a {
+							color: #fff;
+							display: block;
+							padding: 1rem;
+						}
+					}
+				}
+			}
+			&-menu {
+				position: fixed;
+				right: 1rem;
+				top: 1rem;
+				border-radius: 50%;
+				width: 4.2rem;
+				height: 4.2rem;
+				background: $base;
+				display: flex;
+				flex-direction: column;
+				align-content: center;
+				z-index: 2;
+				span {
+					width: 1.6rem;
+					height: .3rem;
+					background: #fff;
+					margin: .4rem auto;
+					&:nth-of-type(1) {
+						margin-top: auto;
+					}
+					&:nth-last-of-type(1) {
+						margin-bottom: auto;
+					}
+				}
+				&.on {
+					span {
+						transform: rotate(45deg);
+						&:nth-of-type(1) {
+						}
+						&:nth-last-of-type(1) {
+							transform: rotate(-45deg);
+							margin-top: -.7rem;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.room {
+		.wrap {
+			.header {
+				&:after {
+					background: $p;
+				}
+			}
+		}
+	}
+	&.tane {
+		.wrap {
+			.header {
+				&:after {
+					background: $g;
+				}
+				&-ttl {
+					color: $base;
+				}
+			}
+		}
+	}
+}
+/* --------------------------------------
+		102 header
+-------------------------------------- */
+.header {
+	color: #fff;
+	@media #{$phone}{
+	}
+	&-btn {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 6rem;
+		font-size: .9rem;
+		font-weight: 700;
+		line-height: 1;
+		height: 6rem;
+		text-align: center;
+		padding: 1rem 0 0 0;
+		i {
+			font-size: 2.4rem;
+			line-height: 1.2;
+		}
+		a {
+			display: block;
+			color: #fff;
+		}
+	}
+}
+/* --------------------------------------
+		103 content
+-------------------------------------- */
+#top {
+	.container {
+		padding-bottom: 4rem;
+		> p {
+			font-weight: 700;
+			font-size: 1.8rem;
+			padding-bottom: 4rem;
+			b {
+				font-size: 3rem;
+				border-bottom: .5rem solid $g;
+			}
+			i {
+				color: $g;
+				font-size: 7rem;
+			}
+		}
+	}
+}
+#content {
+	.container {
+		padding-top: 10rem;
+	}
+	&.tane , &.mypage {
+		.container {
+			padding-top: 5rem;
+		}
+	}
+}
+.container {
+	position: relative;
+	z-index: 1;
+	text-align: center;
+	.login-btn {
+		a {
+			background: $base;
+		}
+	}
+	.signup-btn {
+		a {
+			background: $p;
+		}
+	}
+	.forget-btn {
+		padding-top: 4rem;
+		a {
+			text-decoration: underline;
+		}
+	}
+	.back-btn {
+		padding-top: 2rem;
+		a {
+			max-width: 18rem;
+			line-height: 4rem;
+			background: $b;
+			color: #fff;
+			text-align: center;
+			margin: 0 auto;
+			display: block;
+			font-weight: 700;
+			border-radius: 1rem;
+		}
+	}
+	.entry-btn {
+		a {
+			background: $o;
+			color: #fff;
+			max-width: 24rem;
+			line-height: 5rem;
+			font-size: 1.5rem;
+			text-align: center;
+			margin: 0 auto;
+			display: block;
+			font-weight: 700;
+			border-radius: 10rem;
+		}
+	}
+	.in-btn {
+		button {
+			background: $p;
+			border-color: $p;
+		}
+	}
+	.tane-btn {
+		a {
+			background: $g;
+			color: #fff;
+			max-width: 24rem;
+			line-height: 5rem;
+			font-size: 1.5rem;
+			text-align: center;
+			margin: 0 auto;
+			display: block;
+			font-weight: 700;
+			border-radius: 10rem;
+		}
+	}
+	.change-btn {
+		padding-top: 1rem;
+		a {
+			max-width: 24rem;
+			line-height: 3.8rem;
+			border: .1rem solid #fff;
+			color: #fff;
+			text-align: center;
+			margin: 0 auto;
+			display: block;
+			font-weight: 700;
+			border-radius: 1rem;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+	.complete-mes {
+		text-align: center;
+		font-weight: 700;
+		font-size: 1.6rem;
+		padding-bottom: 3rem;
+	}
+	.welcome-mes {
+		text-align: center;
+		font-weight: 700;
+		font-size: 1.6rem;
+		padding: 3rem 0;
+		i {
+			font-size: 7rem;
+			font-weight: 700;
+			display: block;
+			margin-bottom: 2rem;
+			&.icon-in {
+				color: $p;
+			}
+		}
+		small {
+			font-size: 1.1rem;
+		}
+		b {
+			font-size: 1.8rem;
+		}
+		span {
+			font-size: 1.4rem;
+		}
+		figure {
+			width: 12rem;
+			height: 12rem;
+			border-radius: 50%;
+			margin: 0 auto 3rem;
+			overflow: hidden;
+			box-shadow: 0 0 .2rem 0 rgba(#000,0.5);
+		}
+	}
+	.select-ul {
+		display: flex;
+		li {
+			width: 100%;
+			padding: 2rem 1rem;
+		}
+	}
+	.form-btn {
+		text-align: center;
+		padding-top: 1rem;
+		&.entry-btn {
+			padding-top: 3rem;
+		}
+	}
+	.section {
+		&-room {
+			padding: 4rem 0;
+			background: rgba($p,0.15);
+			h3 {
+				font-size: 2rem;
+				font-weight: 700;
+				padding-bottom: 3rem;
+				b {
+					font-size: 1.8rem;
+				}
+				span {
+					font-size: 1.4rem;
+				}
+			}
+			dl {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				div {
+					width: 13rem;
+					background: #fff;
+					border-radius: 1rem;
+					margin: 1rem;
+					padding: 2rem 1.5rem;
+					dt {
+						color: $p;
+					}
+					dd {
+						font-weight: 700;
+						b {
+							font-size: 4rem;
+							line-height: 1;
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
+		&-tane {
+			padding: 4rem 0;
+			h3 {
+				font-size: 2rem;
+				font-weight: 700;
+				padding-bottom: 3rem;
+				b {
+					font-size: 1.8rem;
+				}
+				span {
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
+	&-nav {
+		padding-bottom: 5rem;
+		ul {
+			padding-bottom: 2rem;
+			li {
+				margin-bottom: 1.5rem;
+			}
+			&.room {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				padding: 0 2rem;
+				li {
+					padding: 0 1rem;
+					a {
+						width: 12rem;
+						border-radius: 2.5rem;
+						color: #fff;
+						display: block;
+						padding: 2rem 0;
+						font-weight: 700;
+						i {
+							font-size: 4rem;
+							font-weight: 700;
+							line-height: 1;
+							display: block;
+							margin-bottom: 1rem;
+						}
+					}
+					&.roomin-btn {
+						a {
+							background: $p;
+						}
+					}
+					&.roomout-btn {
+						a {
+							background: $base;
+						}
+					}
+					&.roomchange-btn {
+						a {
+							border: .3rem solid $p;
+							background: #fff;
+							color: $base;
+							padding: 1.7rem 0;
+							i {
+								font-weight: 400;
+								line-height: 4rem;
+								font-size: 3rem;
+								color: $p;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&-header {
+		text-align: center;
+		padding: 3rem 2rem;
+		@media #{$phone}{
+		}
+		&_icon {
+			font-size: 6.4rem;
+			line-height: 1;
+			display: block;
+			font-weight: 700;
+			@media #{$phone}{
+				font-size: 4rem;
+			}
+		}
+		&_ttl {
+			font-size: 2.4rem;
+			line-height: 1.3;
+			span {
+				font-size: 1.6rem;
+				line-height: 1.8;
+				color: $o;
+				display: block;
+			}
+			b {
+				display: inline-block;
+				line-height: 1;
+			}
+			u {
+				font-size: 1.3rem;
+			}
+			small {
+				font-size: 1.2rem;
+				display: block;
+			}
+			@media #{$phone}{
+			}
+		}
+	}
+	&-tane {
+		header {
+			max-width: 64rem;
+			margin: 0 auto;
+			padding: 0 1rem 3rem;
+			i {
+				font-size: 10rem;
+				display: block;
+				line-height: 1;
+				margin-bottom: -2rem;
+				position: relative;
+				z-index: 2;
+			}
+			h2 {
+				background: $g;
+				border-radius: 2rem;
+				padding: 2.5rem;
+				text-align: left;
+				color: #fff;
+				font-weight: 700;
+				font-size: 1.6rem;
+				position: relative;
+				z-index: 1;
+				&:after {
+					content: "";
+					position: absolute;
+					left: 50%;
+					margin-left: -.8rem;
+					border-style: solid;
+					border-color: $g transparent transparent;
+					border-width: .8rem;
+					bottom: -1.5rem;
+				}
+			}
+			figure {
+				padding-top: 2rem;
+				text-align: center;
+				img {
+					width:7rem;
+					height: 7rem;
+					border-radius: 50%;
+					overflow: hidden;
+					box-shadow: 0 0 .2rem 0 rgba(#000,0.5);
+				}
+				figcaption {
+					font-size: 1.2rem;
+					font-weight: 700;
+					b {
+						font-size: 1.4rem;
+					}
+				}
+			}
+		}
+		&_comment {
+			max-width: 64rem;
+			margin: 0 auto;
+			padding: 0 2rem 4rem 2rem;
+			font-size: 1.4rem;
+			text-align: left;
+		}
+		&_proposal {
+			padding-top: 10rem;
+			background: url("../img/bg_nami.png") 0% 0% repeat-x $g;
+			background-size: 32rem auto;
+			h3 {
+				font-size: 2.4rem;
+				padding-bottom: 4rem;
+				small {
+					display: block;
+					width: 7.5rem;
+					height: 2rem;
+					line-height: 2rem;
+					text-align: center;
+					margin: 0 auto .8rem;
+					border-radius: 10rem;
+					color: #fff;
+					background: $base;
+					font-size: 1.5rem;
+					font-weight: 700;
+				}
+			}
+			dl {
+				max-width: 64rem;
+				margin: 0 auto 1rem;
+				padding: 0 1.5rem;
+				> div {
+					dd {
+						background: #fff;
+						border-radius: 2rem 0 2rem 0;
+						padding: 2.5rem;
+						text-align: left;
+						time {
+							font-size: 1.2rem;
+							color: $g;
+						}
+					}
+					dt {
+						position: relative;
+						padding: 0 1rem;
+						text-align: left;
+						display: flex;
+						flex-direction: row-reverse;
+						justify-content: flex-start;
+						padding-top: .3rem;
+						top: -2.5rem;
+						figure {
+							width: 5.5rem;
+							height: 5.5rem;
+							border-radius: 50%;
+							box-shadow: 0 0 .1rem 0 rgba(#000,0.5);
+							overflow: hidden;
+							position: relative;
+						}
+						p {
+							font-size: 1rem;
+							font-weight: 700;
+							padding: 2.5rem 1rem 0;
+							b {
+								font-size: 1.4rem;
+							}
+							a {
+								color: #fff;
+							}
+						}
+					}
+					margin-bottom: 1rem;
+				}
+			}
+		}
+		> form {
+			padding: 0 1rem;
+		}
+		textarea {
+			&.proposal {
+				border: .1rem dashed $g;
+				max-width: 64rem;
+				margin: 0 auto 1rem;
+			}
+		}
+		
+	}
+	&-entry {
+		background-color: $bg;
+		background-image:
+		 linear-gradient(-90deg, rgba(#fff,0.4) 50%, transparent 50%);
+		background-size: 3rem 3rem;
+		padding: 0 0 3rem 0;
+		text-align: center;
+	}
+	&-list {
+		padding: 0 1rem 5rem;
+		max-width: 64rem;
+		margin: 0 auto;
+		text-align: center;
+		article {
+			&.tane-article {
+				position: relative;
+				margin-bottom: .5rem;
+				.inner {
+					background: $g;
+					border-radius: 2rem;
+					padding: 2.5rem 0;
+					color: #fff;
+					display: flex;
+					position: relative;
+					time {
+						font-size: 1.2rem;
+						line-height: 2rem;
+						position: relative;
+						font-weight: 700;
+						flex-shrink: 0;
+						width: 6.2rem;
+						color: $base;
+						z-index: 1;
+						&:before {
+							font-family: 'icomoon';
+							content: "\e902";
+							z-index: -1;
+							position: absolute;
+							left: 0;
+							top: 0;
+							width: 100%;
+							text-align: center;
+							font-weight: 400;
+							color: rgba(#fff,0.4);
+							font-size: 5rem;
+							line-height: 1;
+							margin-top: -.35em;
+							text-align: center;
+						}
+					}
+					h2 {
+						width: 100%;
+						text-align: left;
+						font-weight: 700;
+						font-size: 1.5rem;
+						line-height: 2rem;
+						padding-right: 1.5rem;
+					}
+					a {
+						width: 8rem;
+						line-height: 2.4rem;
+						background: $base;
+						color: #fff;
+						border-radius: 1.2rem;
+						right: 1rem;
+						bottom: -1.2rem;
+						font-weight: 700;
+						font-size: 1.3rem;
+						position: absolute;
+						text-align: center;
+						i {
+							font-size: 1.2rem;
+						}
+					}
+				}
+				footer {
+					position: relative;
+					padding-left: 1rem;
+					text-align: left;
+					display: flex;
+					justify-content: flex-start;
+					padding-top: .3rem;
+					figure {
+						width: 4.2rem;
+						height: 4.2rem;
+						border-radius: 50%;
+						box-shadow: 0 0 .1rem 0 rgba(#000,0.5);
+						overflow: hidden;
+						position: relative;
+						top: -1.5rem;
+					}
+					p {
+						padding-left: 1rem;
+						font-size: 1rem;
+						font-weight: 700;
+						b {
+							font-size: 1.2rem;
+						}
+					}
+				}
+			}
+		}
+	}
+	&-inner {
+		padding-bottom: 5rem;
+		max-width: 30rem;
+		margin: 0 auto;
+		text-align: center;
+		form {
+			padding-bottom: 3rem;
+			dl , ul li {
+				padding-bottom: 1.5rem;
+				dt {
+					font-size: 1.6rem;
+					padding-bottom: .5rem;
+					i {
+						display: block;
+						margin: 0 auto;
+						font-size: 4rem;
+						text-align: center;
+						color: $b;
+					}
+				}
+				dd {
+					
+				}
+			}
+		}
+		.attention {
+			font-size: 1.2rem;
+			text-align: left;
+		}
+		&_nav {
+			padding-top: 3rem;
+			ul {
+				display: flex;
+				justify-content: center;
+				li {
+					width: 40%;
+					margin: 0 2%;
+					a {
+						border: .1rem solid $g;
+						border-radius: 1rem;
+						padding: .8rem 0 .8rem;
+						font-size: 1.3rem;
+						line-height: 1.4;
+						font-weight: 700;
+						text-align: center;
+						position: relative;
+						display: block;
+						i {
+							font-size: 4rem;
+							line-height: 5rem;
+							line-height: 1;
+							display: block;
+							color: $g;
+							&.icon-cr {
+								position: absolute;
+								top: 50%;
+								margin-top: -1em;
+								line-height: 2;
+								right: .8rem;
+								font-size: 1.4rem;
+								color: $b;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* --------------------------------------
+		104 footer
+-------------------------------------- */
+.footer {
+	clear: both;
+	background: $base;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2;
+	&-copy {
+		color: #fff;
+		height: 5rem;
+		font-size: 1rem;
+		line-height: 5rem;
+		text-align: center;
+		display: block;
+		@media #{$phone}{
+		}
+	}
+}

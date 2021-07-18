@@ -7,20 +7,59 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../common/import.jsp"%>
-<html>
+<!doctype html>
+<html lang="ja">
 <head>
-    <title>入室手続き</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>入室手続き</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/common.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-<h1>入室手続きを行います．現在のあなたの状態を選択してください</h1>
-<form action="/enter/new" method="post">
-    <select name="statusesId">
-        <c:forEach var="status" items="${statuses}">
-            <option value="${status.getId()}"><c:out value="${status.getDescription()}"/></option>
-        </c:forEach>
-    </select>
-    <input type="submit" value="入室" />
-</form>
-
+<body id="content" class="room">
+	<div class="wrap">
+		<header class="header">
+			<h1 class="header-ttl">入室手続き</h1>
+			<small class="header-en">ENTER</small>
+			<div id="menu" class="header-menu"><span></span><span></span></div>
+			<nav class="header-nav">
+				<ul>
+					<li class="entry-btn"><a href="/consultation/new"><i class="icon-tr"></i>タネを登録</a></li>
+					<li class="entry-list"><a href="/consultation/index"><i class="icon-tr"></i>みんなのタネを見る</a></li>
+					<li><a href="/enter/new"><i class="icon-tr"></i>入室設定</a></li>
+					<li><a href="/enter/change"><i class="icon-tr"></i>状態変更</a></li>
+					<li><a href="/enter/delete"><i class="icon-tr"></i>退室設定</a></li>
+					<li><a href="/users"><i class="icon-tr"></i>マイページ</a></li>
+					<li><a href="/sessions/delete"><i class="icon-tr"></i>ログアウト</a></li>
+				</ul>
+			</nav>
+		</header><!-- ▲ header -->
+		<main class="container">
+			<div class="container-inner">
+				<div class="welcome-mes">
+					<i class="icon-in"></i>
+					<p>入室手続きを行います。<br>現在のあなたの状態を選択して<br>入室してください。</p>
+				</div>
+				<form action="/enter/new" method="post">
+					<div class="form-select">
+					<select name="statusesId">
+						<c:forEach var="status" items="${statuses}">
+							<option value="${status.getId()}"><c:out value="${status.getDescription()}"/></option>
+						</c:forEach>
+					</select>
+					</div>
+					<div class="form-btn in-btn">
+						<button type="submit" value="入室">入室する</button>
+					</div>
+				</form>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer-copy">&copy; Tokyo Gakugei University.</div>
+		</footer>
+	</div>
 </body>
 </html>
