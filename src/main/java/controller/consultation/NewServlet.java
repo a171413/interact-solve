@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/consultations/new")
+@WebServlet("/consultation/new")
 public class NewServlet extends HttpServlet {
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/consultation/new.jsp");
@@ -42,6 +42,6 @@ public class NewServlet extends HttpServlet {
         consultation.insertConsultation();
 
         //登録が完了したらリダイレクト;
-        response.sendRedirect("/consultations/index");
+        response.sendRedirect("/consultation/index");
     }
 }
