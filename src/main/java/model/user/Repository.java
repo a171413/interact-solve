@@ -1,14 +1,10 @@
 package model.user;
 
-import com.mysql.cj.protocol.x.SqlResultMessageListener;
-import controller.user.IndexServlet;
 import lib.mysql.Client;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Repository extends Client {
     public static void insertUser(User user) {
@@ -19,8 +15,8 @@ public class Repository extends Client {
         try {
             //SQL文の用意
             String sql = "insert into users "+
-                    "(name, mail, pass, created_at, updated_at)"+
-                    "values(?, ?, ?, ?, ?)";
+                    "(name, mail, pass, birthday, answer, created_at, updated_at, questions_id)"+
+                    "values(?, ?, ?, ?, ?, ?, ?, ?)";
 
             connection = create();
 
@@ -31,8 +27,11 @@ public class Repository extends Client {
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getMail());
             stmt.setString(3, user.getPass());
-            stmt.setTimestamp(4, currentTime);
-            stmt.setTimestamp(5, currentTime);
+            stmt.setDate(4, user.getBirthday());
+            stmt.setString(5, user.getAnswer());
+            stmt.setTimestamp(6, currentTime);
+            stmt.setTimestamp(7, currentTime);
+            stmt.setInt(8, user.getQuestionId());
 
             stmt.executeUpdate();
             return;
@@ -52,9 +51,7 @@ public class Repository extends Client {
 
         try {
             String sql = "select * from users where mail = ?";
-
             connection = create();
-
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, mail);
 
@@ -68,8 +65,11 @@ public class Repository extends Client {
                         rs.getString("name"),
                         rs.getString("mail"),
                         rs.getString("pass"),
+                        rs.getDate("birthday"),
+                        rs.getString("answer"),
                         rs.getTimestamp("created_at"),
-                        rs.getTimestamp("updated_at")
+                        rs.getTimestamp("updated_at"),
+                        rs.getInt("questions_id")
                 );
             }
             return user;
@@ -85,6 +85,36 @@ public class Repository extends Client {
    public static User getCurrentUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
         return  (User) session.getAttribute(User.currentUserKey);
+    }
+
+    public static void updatePassword(User user){
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            //SQL文の用意
+            String sql = "UPDATE users SET pass = ?, updated_at = ? where id = ?";
+
+            connection = create();
+
+            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+
+            stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, user.getPass());
+            stmt.setTimestamp(2, currentTime);
+            stmt.setInt(3, user.getId());
+
+            stmt.executeUpdate();
+            return;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        } finally {
+            close(connection, stmt, rs);
+        }
     }
 
 }
