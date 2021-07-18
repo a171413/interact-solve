@@ -40,8 +40,8 @@
 		<main class="container">
 			<div class="container-inner">
 				<div class="welcome-mes">
-					<figure class="user-fig"><img src="${pageContext.request.contextPath}/img/sample.png" alt="Chimpuiさん"/></figure>
-					<p>Chimpuiさん<br>退室手続きを行いますか？</p>
+					<figure class="user-fig"><img src="${pageContext.request.contextPath}/img/sample.png" alt="${currentUser.getName()}さん"/></figure>
+					<p>${currentUser.getName()}さん<br>退室手続きを行いますか？</p>
 				</div>
 				<ul class="select-ul">
 					<li>
