@@ -25,4 +25,9 @@ public class Question extends Default {
     public String getContent() {
         return content;
     }
+
+    public static Question getQuestion(Integer id) {
+        return Repository.getQuestion(id);
+    }
+
 }
