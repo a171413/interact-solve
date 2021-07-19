@@ -47,7 +47,7 @@
                                 </select>
                             </div>
                         </li>
-						<li><p>秘密の質問への回答</p><input type="text" id="answer" name="answer" /></li>
+						<li><p>秘密の質問への回答</p><input type="text" id="answer" name="answer" placeholder="質問への回答"/></li>
 					</ul>
 					<div class="form-btn"><button type="submit" name="button" oninput="CheckPassword(this)">登録</button></div>
 				</form>
