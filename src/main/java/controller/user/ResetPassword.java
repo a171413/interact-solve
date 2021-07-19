@@ -15,7 +15,7 @@ import java.util.Objects;
 @WebServlet("/user/resetPassword")
 public class ResetPassword extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/user/updatePassword.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/user/resetPassword.jsp");
         dispatcher.forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +30,7 @@ public class ResetPassword extends HttpServlet {
         if (Objects.nonNull(user) && user.getAnswer().equals(answer)) {
             user.setPass(pass);
             user.updatePassword();
+            session.invalidate();
             response.sendRedirect("/users");
         } else {
             request.setAttribute("couldNotUpdate", true);
