@@ -547,6 +547,23 @@ input:focus {
   z-index: 1;
   text-align: center;
 }
+.container-gnav {
+  max-width: 28rem;
+  margin: 0 auto;
+}
+.container-gnav li {
+  padding-bottom: 1.5rem;
+}
+.container-gnav li a {
+  border-radius: 2.5rem;
+  line-height: 5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  position: relative;
+  display: block;
+  color: #fff;
+}
 .container .login-btn a {
   background: #222222;
 }
