@@ -5,6 +5,8 @@ import lib.mysql.Client;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.*;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class Repository extends Client {
     public static void insertUser(User user) {
@@ -60,12 +62,14 @@ public class Repository extends Client {
             //スコープの問題があるので一旦外で定義
             User user = null;
             if (rs.next()) {
+                TimeZone.setDefault(TimeZone.getTimeZone("Asia/Tokyo"));
+                Calendar cal = Calendar.getInstance();
                 user = new User(
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("mail"),
                         rs.getString("pass"),
-                        rs.getDate("birthday"),
+                        rs.getDate("birthday", cal),
                         rs.getString("answer"),
                         rs.getTimestamp("created_at"),
                         rs.getTimestamp("updated_at"),
