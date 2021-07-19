@@ -16,6 +16,8 @@ public class AuthenticateFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+
         HttpServletRequest httpServletRequest = (HttpServletRequest) req;
         HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
 
@@ -51,7 +53,7 @@ public class AuthenticateFilter implements Filter {
                 // リダイレクト
                 httpServletResponse.sendRedirect("/users");
             }
-        }// 初期画面にアクセスしたとき
+        }// 本人確認画面にアクセスしたとき
         else if (servletPath.equals("/user/forget")) {
             if (currentUser == null) {
                 chain.doFilter(req, resp);
@@ -59,7 +61,8 @@ public class AuthenticateFilter implements Filter {
                 // リダイレクト
                 httpServletResponse.sendRedirect("/users");
             }
-        }// 初期画面にアクセスしたとき
+        }
+        // パスワードリセット画面にアクセスしたとき
         else if (servletPath.equals("/user/resetPassword")) {
             if (currentUser == null) {
                 chain.doFilter(req, resp);
@@ -68,6 +71,14 @@ public class AuthenticateFilter implements Filter {
                 httpServletResponse.sendRedirect("/users");
             }
         }
+        // CSSファイルを取得するとき
+        else if (servletPath.startsWith("/css/") && servletPath.endsWith(".css")) {
+                chain.doFilter(req, resp);
+        }
+        // JSファイルを取得するとき
+        else if (servletPath.startsWith("/js/") && servletPath.endsWith(".js")) {
+                chain.doFilter(req, resp);
+       }
         // ログアウト（画面）にアクセスしたとき
         else if (servletPath.equals("/sessions/delete")) {
             if (currentUser == null) {
