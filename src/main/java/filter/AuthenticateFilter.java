@@ -73,12 +73,28 @@ public class AuthenticateFilter implements Filter {
         }
         // CSSファイルを取得するとき
         else if (servletPath.startsWith("/css/") && servletPath.endsWith(".css")) {
-                chain.doFilter(req, resp);
+            chain.doFilter(req, resp);
         }
         // JSファイルを取得するとき
         else if (servletPath.startsWith("/js/") && servletPath.endsWith(".js")) {
-                chain.doFilter(req, resp);
+            chain.doFilter(req, resp);
        }
+        // フォントを取得するとき
+        else if (servletPath.startsWith("/fonts/")) {
+            chain.doFilter(req, resp);
+        }
+        // imgを取得するとき
+        else if (servletPath.startsWith("/img/")) {
+            chain.doFilter(req, resp);
+        }
+        // scssを取得するとき
+        else if (servletPath.startsWith("/scss/")) {
+            chain.doFilter(req, resp);
+        }
+        // svgを取得するとき
+        else if (servletPath.startsWith("/svg/")) {
+            chain.doFilter(req, resp);
+        }
         // ログアウト（画面）にアクセスしたとき
         else if (servletPath.equals("/sessions/delete")) {
             if (currentUser == null) {
