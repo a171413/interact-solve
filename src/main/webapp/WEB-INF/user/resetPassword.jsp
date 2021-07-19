@@ -8,41 +8,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>パスワード再設定画面</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <script src="${pageContext.request.contextPath}/js/common.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<h2>パスワードを再設定します</h2>
-<p>入力欄を全て記入してください</p>
-<form action="/user/resetPassword" method="post">
-    <table>
-        <tr>
-            <td>秘密の質問</td>
-            <td>${question.getContent()}</td>
-            <td><input type="text" id="answer" name="answer" /></td>
-        </tr>
-        <tr>
-            <td>新たなパスワード</td>
-            <td><input type="password" id="pass" name="pass" minlength="6" maxlength="20"></td>
-        </tr>
-        <tr>
-            <td>新たなパスワード確認</td>
-            <td><input type="password" id="passConfirm" minlength="6" maxlength="20"></td>
-       </tr>
-    </table>
-    <input type="submit" name="button" value="再設定" oninput="CheckPassword(this)">
-</form>
+<body id="content">
+    <div class="wrap">
+        <header class="header">
+            <h1 class="header-ttl">再設定</h1>
+            <small class="header-en">RESET</small>
+        </header>
+        <main class="container">
+            <div class="container-inner">
+                <div class="welcome-mes">
+                    <p>秘密の質問への回答と<br>新たなパスワードを入力してください</p>
+                </div>
+                <form action="/user/resetPassword" method="post">
+                    <ul>
+                        <li><p>${question.getContent()}</p><input type="text" id="answer" name="answer" /></li>
+                        <li><p>新たなパスワード<br>（半角英数6文字以上20文字以下）</p><input type="password" id="pass" name="pass" minlength="6" maxlength="20"></li>
+                        <li><p>新たなパスワード（確認用）</p><input type="password" id="passConfirm" minlength="6" maxlength="20"></li>
+                    </ul>
+                    <div class="form-btn"><button type="submit" name="button" oninput="CheckPassword(this)">再設定</button></div>
+                </form>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer-copy">&copy; Tokyo Gakugei University.</div>
+        </footer>
+    </div>
 </body>
-</html>
-
-<script lang="js" type="text/javascript">
-    function CheckPassword(input){
-        let pass = document.getElementById("pass")
-        let passConfirm = document.getElementById("passConfirm")
-
-        if (pass !== passConfirm){
-            input.setCustomValidity('パスワードが一致しません')
-        }else{
-            input.setCustomValidity('')
-        }
-    }
-</script>

@@ -31,13 +31,14 @@
 				</div>
 				<form action="/user/signup" method="post">
 					<ul>
-						<li><input type="text" name="name" placeholder="氏名" required /></li>
-						<li><input type="email" id="mail" name="mail" placeholder="メールアドレス" required /></li>
-						<li><input type="email" id="mailConfirm" oninput="CheckEmail(this)" placeholder="メールアドレス確認" required /></li>
-						<li><input type="password" id="pass" name="pass" minlength="6" maxlength="20" placeholder="パスワード"></li>
-						<li><input type="password" id="passConfirm" minlength="6" maxlength="20" placeholder="パスワード確認"></li>
-                        <li><input type="date" id="birthday" name="birthday" required /></li>
+						<li><p>氏名</p><input type="text" name="name" placeholder="氏名" required /></li>
+						<li><p>メールアドレス</p><input type="email" id="mail" name="mail" placeholder="メールアドレス" required /></li>
+						<li><p>メールアドレス（確認用）</p><input type="email" id="mailConfirm" oninput="CheckEmail(this)" placeholder="メールアドレス確認" required /></li>
+						<li><p>パスワード<br>（半角英数6文字以上20文字以内）</p><input type="password" id="pass" name="pass" minlength="6" maxlength="20" placeholder="パスワード"></li>
+						<li><p>パスワード（確認用）</p><input type="password" id="passConfirm" minlength="6" maxlength="20" placeholder="パスワード確認"></li>
+                        <li><p>誕生日</p><input type="date" id="birthday" name="birthday" required /></li>
 						<li>
+							<p>秘密の質問</p>
                             <div class="form-select">
                                 <select name="question">
                                     <c:forEach var="question" items="${questions}">
@@ -46,7 +47,7 @@
                                 </select>
                             </div>
                         </li>
-                        <li><input type="text" id="answer" name="answer" /></li>
+						<li><p>秘密の質問への回答</p><input type="text" id="answer" name="answer" /></li>
 					</ul>
 					<div class="form-btn"><button type="submit" name="button" oninput="CheckPassword(this)">登録</button></div>
 				</form>
