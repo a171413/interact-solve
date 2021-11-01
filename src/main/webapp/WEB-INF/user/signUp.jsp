@@ -28,6 +28,7 @@
 			<div class="container-inner">
 				<div class="welcome-mes">
 					<p>ユーザー情報を入力してください</p>
+					<p>（ログインの方は<a href="/sessions/new">こちら</a>）</p>
 				</div>
 				<form action="/user/signup" method="post">
 					<ul>
