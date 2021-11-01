@@ -116,7 +116,7 @@ public class AuthenticateFilter implements Filter {
         else {
             if (currentUser == null) {
                 // リダイレクト
-                httpServletResponse.sendRedirect("/sessions/new");
+                httpServletResponse.sendRedirect("/index");
             } else {
                 chain.doFilter(req, resp);
             }
