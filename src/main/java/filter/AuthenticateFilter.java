@@ -118,7 +118,11 @@ public class AuthenticateFilter implements Filter {
                 // リダイレクト
                 httpServletResponse.sendRedirect("/index");
             } else {
-                chain.doFilter(req, resp);
+                if (servletPath.equals("/")) {
+                    httpServletResponse.sendRedirect("/users");
+                } else {
+                    chain.doFilter(req, resp);
+                }
             }
         }
     }
