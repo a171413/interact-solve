@@ -112,14 +112,20 @@ public class AuthenticateFilter implements Filter {
                 httpServletResponse.sendRedirect("/users");
             }
         }
+        else if (servletPath.equals("/")) {
+            if (currentUser == null) {
+                httpServletResponse.sendRedirect("/index");
+            } else {
+                httpServletResponse.sendRedirect("/users");
+            }
+        }
         // ログインしないとダメな画面にアクセスしたとき
         else {
             if (currentUser == null) {
                 // リダイレクト
                 httpServletResponse.sendRedirect("/index");
-            } else {
-                chain.doFilter(req, resp);
             }
+                chain.doFilter(req, resp);
         }
     }
 
