@@ -38,7 +38,10 @@
 				<c:if test="${couldNotSignIn}">
 					<p>※メールアドレスまたはパスワードが間違えています</p>
 				</c:if>
-				<div class="forget-btn">パスワードをお忘れの方は<a href="/user/forget">こちら</a></div>
+				<div class="forget-btn">
+					<p>パスワードをお忘れの方は<a href="/user/forget">こちら</a></p>
+					<p>新規登録の方は<a href="/user/signup">こちら</a></p>
+				</div>
 			</div>
 		</main>
 		<footer class="footer">
