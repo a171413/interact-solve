@@ -77,9 +77,7 @@
 				</div>
 			</div>
 		</main>
-		<footer class="footer">
-			<div class="footer-copy">&copy; Tokyo Gakugei University.</div>
-		</footer>
+		<%@include file="../common/footer.jsp"%>
 	</div>
 </body>
 </html>
