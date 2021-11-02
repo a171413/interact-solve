@@ -30,9 +30,7 @@
 				<li class="login-btn"><a href="/sessions/new">ログイン</a></li>
 			</ul>
 		</main>
-		<footer class="footer">
-			<div class="footer-copy">&copy; Tokyo Gakugei University.</div>
-		</footer>
+		<%@include file="common/footer.jsp"%>
 	</div>
 </body>
 </html>
