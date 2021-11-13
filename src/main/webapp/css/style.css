@@ -977,7 +977,7 @@ input:focus {
 }
 .container-list article.tane-article {
   position: relative;
-  margin-bottom: .5rem;
+  margin-bottom: 2rem;
 }
 .container-list article.tane-article .inner {
   background: #98B31E;
