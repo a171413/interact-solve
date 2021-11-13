@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/common.js"></script>
+	<script src="${pageContext.request.contextPath}/js/nullify-enter.js"></script>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -41,7 +42,7 @@
 				<div class="welcome-mes">
 					<p><b>タネ</b>を登録してください</p>
 				</div>
-				<form action="/consultation/new" method="post">
+				<form action="/consultation/new" method="post" id="form1">
 					<dl>
 						<dt>タイトル</dt>
 						<dd><input type="text" name="title" required maxlength="45" /></dd>
@@ -60,3 +61,4 @@
 	</div>
 </body>
 </html>
+
