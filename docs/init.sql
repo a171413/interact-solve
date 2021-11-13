@@ -174,3 +174,12 @@ INSERT INTO `interact-solve`.`statuses` (`id`, `description`, `created_at`, `upd
 
 COMMIT;
 
+-- -----------------------------------------------------
+-- Data for table `interact-solve`.`statuses`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `interact-solve`;
+INSERT INTO `interact-solve`.`users` (`id`, `name`, `mail`, `pass`, `birthday`, `answer`, `created_at`, `updated_at`, `questions_id`) VALUES (1, 'テストユーザー', 'test@example.com', 'test0000', '2000-01-01', '北海道日本ハムファイターズ', '2021-07-01 00:00:00', '2021-07-01 00:00:00', '1');
+
+COMMIT;
+
