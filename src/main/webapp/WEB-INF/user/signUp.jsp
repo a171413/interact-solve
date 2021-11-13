@@ -15,6 +15,7 @@
 	<title>新規ユーザー登録</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 	<script src="${pageContext.request.contextPath}/js/common.js"></script>
+	<script src="${pageContext.request.contextPath}/js/nullify-enter.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -30,7 +31,7 @@
 					<p>ユーザー情報を入力してください</p>
 					<p>（ログインの方は<a href="/sessions/new">こちら</a>）</p>
 				</div>
-				<form action="/user/signup" method="post">
+				<form action="/user/signup" method="post" id="form1">
 					<ul>
 						<li><p>氏名</p><input type="text" name="name" placeholder="氏名" required /></li>
 						<li><p>メールアドレス</p><input type="email" id="mail" name="mail" placeholder="メールアドレス" required /></li>

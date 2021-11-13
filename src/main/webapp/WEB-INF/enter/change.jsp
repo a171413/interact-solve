@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/common.js"></script>
+	<script src="${pageContext.request.contextPath}/js/nullify-enter.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body id="content" class="room">
@@ -42,7 +43,7 @@
 					<i class="icon-in"></i>
 					<p>入室状態の変更を行います。<br>変更する状態を選択してください。</p>
 				</div>
-				<form action="/enter/change" method="post">
+				<form action="/enter/change" method="post" id="form1">
 					<div class="form-select">
 					<select name="statusesId">
 						<c:forEach var="status" items="${statuses}">
@@ -60,3 +61,4 @@
 	</div>
 </body>
 </html>
+
